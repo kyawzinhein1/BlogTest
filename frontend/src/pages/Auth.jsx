@@ -22,7 +22,7 @@ export const action = async ({ request }) => {
     password: data.get("password"),
   };
 
-  const response = await fetch(`${process.env.REACT_APP_DOMAIN}/${mode}`, {
+  const response = await fetch(`${import.meta.env.VITE_APP_DOMAIN}/${mode}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

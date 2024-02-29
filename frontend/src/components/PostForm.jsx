@@ -94,12 +94,17 @@ export const action = async ({ request, params }) => {
     date: data.get("date"),
   };
 
-  let url = `${process.env.REACT_APP_DOMAIN}/posts`;
+  // let url = `${import.meta.env.REACT_APP_DOMAIN}/posts`;
+
+  let url = import.meta.env.VITE_APP_DOMAIN ? `${import.meta.env.VITE_APP_DOMAIN}/posts` : 'fallback_url_here';
+
 
   if (method === "PATCH") {
     const id = params.id;
-    url = `${process.env.REACT_APP_DOMAIN}/posts/${id}`;
+    url = `${import.meta.env.REACT_APP_DOMAIN}/posts/${id}`;
   }
+
+  console.log(url);
 
   const response = await fetch(url, {
     method,
