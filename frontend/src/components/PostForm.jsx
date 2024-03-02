@@ -94,22 +94,18 @@ export const action = async ({ request, params }) => {
     date: data.get("date"),
   };
 
-  // let url = `${import.meta.env.REACT_APP_DOMAIN}/posts`;
-
-  let url = import.meta.env.VITE_APP_DOMAIN ? `${import.meta.env.VITE_APP_DOMAIN}/posts` : 'fallback_url_here';
-
+  let url = `${import.meta.env.VITE_APP_DOMAIN}/posts`;
 
   if (method === "PATCH") {
     const id = params.id;
-    url = `${import.meta.env.REACT_APP_DOMAIN}/posts/${id}`;
+    url = `${import.meta.env.VITE_APP_DOMAIN}/posts/${id}`;
   }
-
-  console.log(url);
 
   const response = await fetch(url, {
     method,
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
       Authorization: "Bearer " + token,
     },
     body: JSON.stringify(postData),
